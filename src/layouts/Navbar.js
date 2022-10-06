@@ -1,8 +1,24 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-
+import {Link, useNavigate} from 'react-router-dom';
+import swal from 'sweetalert';
+import axios from 'axios';
 
 const Navbar = () => {
+    const navigate =useNavigate();
+    const logoutSubmit = (e) => {
+        e.preventDefault();
+        
+        axios.post(`/api/logout`).then(res => {
+            if(res.data.status === 200)
+            {
+                localStorage.removeItem('auth_token');
+                localStorage.removeItem('auth_name');
+                swal("Success",res.data.message,"success");
+                navigate('/admin/login');
+            }
+        });
+
+    }
 
     return (
         <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -26,7 +42,7 @@ const Navbar = () => {
                         <li><Link className="dropdown-item" to="#!">Settings</Link></li>
                         <li><Link className="dropdown-item" to="#!">Activity Log</Link></li>
                         <li><hr className="dropdown-divider" /></li>
-                        <li><Link className="dropdown-item" to="#!">Logout</Link></li>
+                        <li><Link className="dropdown-item" onClick={logoutSubmit} to="#!">Logout</Link></li>
                     </ul>
                 </li>
             </ul>
