@@ -2,6 +2,7 @@ import React from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import swal from 'sweetalert';
 import axios from 'axios';
+import config from '../config';
 
 const Navbar = () => {
     const navigate =useNavigate();
@@ -13,13 +14,16 @@ const Navbar = () => {
             {
                 localStorage.removeItem('auth_token');
                 localStorage.removeItem('auth_name');
-                swal("Success",res.data.message,"success");
-                navigate('/admin/login');
+                swal("Success",res.data.message,"success");             
+                navigate(config.login);
+                
             }
+
         });
 
     }
-
+        const nameUser =localStorage.getItem("auth_name");
+        // console.log(localStorage.getItem("auth_name"));
     return (
         <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <Link className="navbar-brand ps-3" to="/admin">React Ecommerce</Link>
@@ -39,8 +43,11 @@ const Navbar = () => {
                         <i className="fas fa-user fa-fw"></i>
                     </Link>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <h2 className="dropdown-item">User: {nameUser}</h2>
+
                         <li><Link className="dropdown-item" to="#!">Settings</Link></li>
                         <li><Link className="dropdown-item" to="#!">Activity Log</Link></li>
+
                         <li><hr className="dropdown-divider" /></li>
                         <li><Link className="dropdown-item" onClick={logoutSubmit} to="#!">Logout</Link></li>
                     </ul>
