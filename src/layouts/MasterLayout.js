@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import PublicRouter from "../routes/PublicRouter";
 import { Route,Routes,Navigate } from "react-router-dom";
-import Dashboard from "../components/Dashboard";
+
 
 function MasterLayout() {
   return (

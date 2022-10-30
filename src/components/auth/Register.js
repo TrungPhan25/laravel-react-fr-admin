@@ -35,10 +35,11 @@ function Register(){
             axios.post(`/api/register`, data).then(res => { 
                 if(res.data.status === 200)
                 {
-                    localStorage.setItem('auth_token', res.data.token);
-                    localStorage.setItem('auth_name', res.data.username);
+                    // localStorage.setItem('auth_token', res.data.token);
+                    // localStorage.setItem('auth_name', res.data.username);
                     swal("Success",res.data.message,"success");
-                    navigate('/admin');
+                    navigate('/login');
+                    
                 }
                 else
                 {
