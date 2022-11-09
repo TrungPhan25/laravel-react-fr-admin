@@ -7,8 +7,8 @@ function Category(){
     const navigate = useNavigate()
 
     const [categoryInput, setCategory] = useState({
-        slug: '',
-        name: '',
+        categorySlug: '',
+        display: '',
         descrip: '',
         error_list: [],
     });
@@ -22,8 +22,8 @@ function Category(){
         e.preventDefault();
 
         const data = {
-            slug:categoryInput.slug,
-            name:categoryInput.name,
+            categorySlug:categoryInput.categorySlug,
+            display:categoryInput.display,
             description:categoryInput.descrip
         }
 
@@ -48,8 +48,8 @@ function Category(){
     if(categoryInput.error_list)
     {
         display_errors = [
-            categoryInput.error_list.slug,
-            categoryInput.error_list.name,
+            categoryInput.error_list.categorySlug,
+            categoryInput.error_list.display,
         ]
     }
     return (
@@ -82,15 +82,15 @@ function Category(){
                         <div className="tab-pane card-body border fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
                          <div className="form-group mb-3">
-                                <label>Slug</label>
-                                <input type="text" name="slug" onChange={handleInput} value={categoryInput.slug} className="form-control" />
-                                <span>{categoryInput.error_list.slug}</span>
+                                <label>categorySlug</label>
+                                <input type="text" name="categorySlug" onChange={handleInput} value={categoryInput.categorySlug} className="form-control" />
+                                <span>{categoryInput.error_list.categorySlug}</span>
                     
                             </div>
                             <div className="form-group mb-3">
                                 <label>Name</label>
-                                <input type="text" name="name" onChange={handleInput} value={categoryInput.name}className="form-control" />
-                                <span>{categoryInput.error_list.name}</span>
+                                <input type="text" name="display" onChange={handleInput} value={categoryInput.display}className="form-control" />
+                                <span>{categoryInput.error_list.display}</span>
 
                             </div>
                             <div className="form-group mb-3">

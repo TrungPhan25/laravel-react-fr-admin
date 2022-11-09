@@ -57,11 +57,12 @@ function ViewCategory(){
     {
         viewcategory_HTMLTABLE = 
         categorylist.map( (item) => {
+           
             return (
                 <tr key={item.id}>
                     <td>{item.id}</td>
-                    <td>{item.name}</td>
-                    <td>{item.slug}</td>
+                    <td>{item.display}</td>
+                    <td>{item.categorySlug}</td>
                     <td>{item.status}</td>
                     <td>
                         <Link to={`/admin/edit-category/${item.id}`} className="btn btn-success btn-sm">Edit</Link>

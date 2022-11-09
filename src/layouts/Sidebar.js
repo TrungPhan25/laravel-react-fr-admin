@@ -27,6 +27,18 @@ const Sidebar = () => {
                         </nav>
                     </div>
 
+                    <Link className="nav-link collapsed" to="#" data-bs-toggle="collapse" data-bs-target="#collapseSlider" aria-expanded="false" aria-controls="collapseSlider">
+                        <div className="sb-nav-link-icon"><i className="fas fa-columns"></i></div>
+                        Slider
+                        <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                    </Link>
+                    <div className="collapse" id="collapseSlider" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav className="sb-sidenav-menu-nested nav">
+                            <Link className="nav-link" to="/admin/add-slider">Add Slider</Link>
+                            <Link className="nav-link" to="/admin/view-slider">View Slider</Link>
+                        </nav>
+                    </div>
+
 
                     <Link className="nav-link" to="/admin/profile">
                         <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>

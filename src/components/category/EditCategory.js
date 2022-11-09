@@ -87,13 +87,13 @@ function EditCategory(){
 
                             <div className="form-group mb-3">
                                 <label>Slug</label>
-                                <input type="text" name="slug" onChange={handleInput} value={categoryInput.slug} className="form-control" />
-                                <small className="text-danger">{error.slug}</small>
+                                <input type="text" name="categorySlug" onChange={handleInput} value={categoryInput.categorySlug} className="form-control" />
+                                <small className="text-danger">{error.categorySlug}</small>
                             </div>
                             <div className="form-group mb-3">
                                 <label>Name</label> 
-                                <input type="text" name="name" onChange={handleInput} value={categoryInput.name} className="form-control" />
-                                <small className="text-danger">{error.name}</small>
+                                <input type="text" name="display" onChange={handleInput} value={categoryInput.display} className="form-control" />
+                                <small className="text-danger">{error.display}</small>
                             </div>
                             <div className="form-group mb-3">
                                 <label>Description</label>
