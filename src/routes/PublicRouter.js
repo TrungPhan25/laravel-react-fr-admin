@@ -8,6 +8,8 @@ import EditProduct from "../components/product/EditProduct"
 import ViewProduct from "../components/product/ViewProduct"
 import Profile from "../components/Profile"
 import AddSlider from "../components/slider/AddSilder"
+import EditSlider from "../components/slider/EditSlider"
+import ViewSlider from "../components/slider/ViewSlider"
 
 const PublicRouter = [
 
@@ -19,6 +21,9 @@ const PublicRouter = [
     { path: '/view-product', component: ViewProduct},
     { path: '/edit-product/:id', component: EditProduct},
     { path: '/add-slider', component: AddSlider},
+    { path: '/view-slider', component: ViewSlider},
+    { path: '/edit-slider/:id', component: EditSlider},
+
     { path: '/profile', component: Profile},
     
 ]

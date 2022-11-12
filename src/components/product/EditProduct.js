@@ -18,7 +18,7 @@ function EditProduct (){
         title: '',
         description: '',
         selling_price: '',
-        original_price: '',
+        price: '',
         qty: '',
     });
 
@@ -90,7 +90,7 @@ const [selectedValue, setSelectedValue] = useState([]);
         formData.append('description', productInput.description);
 
         formData.append('selling_price', productInput.selling_price);
-        formData.append('original_price', productInput.original_price);
+        formData.append('price', productInput.price);
         formData.append('qty', productInput.qty);
         
         formData.append('size', JSON.stringify(selectedValue));
@@ -187,7 +187,7 @@ const [selectedValue, setSelectedValue] = useState([]);
                                 </div>
                                 <div className="col-md-4 form-group mb-3">
                                     <label>Original Price</label>
-                                    <input type="text" name="original_price" onChange={handleInput} value={productInput.original_price}  className="form-control" />
+                                    <input type="text" name="price" onChange={handleInput} value={productInput.price}  className="form-control" />
                                     <small className="text-danger"></small>
                                 </div>
                                 <div className="col-md-4 form-group mb-3">
