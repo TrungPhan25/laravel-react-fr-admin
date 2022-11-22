@@ -8,7 +8,7 @@ function ViewSlider(){
     useEffect(() => {
 
         let isMounted = true;
-        document.title = "View Product";
+        document.title = "View Slider";
 
         axios.get(`/api/view-slider`).then(res=>{
             if(isMounted)

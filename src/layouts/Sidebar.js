@@ -39,6 +39,18 @@ const Sidebar = () => {
                         </nav>
                     </div>
 
+                    <Link className="nav-link collapsed" to="#" data-bs-toggle="collapse" data-bs-target="#collapseBlog" aria-expanded="false" aria-controls="collapseBlog">
+                        <div className="sb-nav-link-icon"><i className="fas fa-columns"></i></div>
+                            Những câu chuyện
+                        <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                    </Link>
+                    <div className="collapse" id="collapseBlog" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav className="sb-sidenav-menu-nested nav">
+                            <Link className="nav-link" to="/admin/add-blog">Add Blog</Link>
+                            <Link className="nav-link" to="/admin/view-blog">View Blog</Link>
+                        </nav>
+                    </div>
+
 
                     <Link className="nav-link" to="/admin/profile">
                         <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
@@ -47,7 +59,12 @@ const Sidebar = () => {
 
                     <Link className="nav-link" to="/admin/orders">
                         <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
-                        Orders
+                        Đơn hàng
+                    </Link>
+
+                    <Link className="nav-link" to="/admin/donors">
+                        <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
+                        Nhà tài trợ
                     </Link>
 
                     <div className="sb-sidenav-menu-heading">Interface</div>

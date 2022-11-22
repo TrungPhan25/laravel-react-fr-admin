@@ -1,8 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import swal from "sweetalert";
 function AddSlider(){
+    const navigate = useNavigate()
+
     const [errorlist, setError] = useState([]);
     const [sliderInput, setSlider] = useState({
         title: '',
@@ -32,12 +35,9 @@ function AddSlider(){
                 // swal("Success",res.data.message,"success");
                 console.log('thanh cong');
                 swal("Success",res.data.massage,"success");
-            
-                setSlider({...sliderInput, 
-                    title: '',
-                    description: '',
-                    color: '',
-                });
+                navigate("/admin/view-slider")
+        
+              
                 setError([]);
             }
             else if(res.data.status === 422)

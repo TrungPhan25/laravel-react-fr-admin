@@ -16,7 +16,6 @@ function ViewProduct(){
                 {
                     setProduct(res.data.products);
                     setLoading(false);
-                    console.table(res.data.products);
                    
                 }
             }
@@ -34,11 +33,11 @@ function ViewProduct(){
     else
     {
         display_Productdata = viewProduct.map( (item) => {
-            
+        
             return (
                 <tr key={item.id}>
                     <td>{item.id}</td>
-                    <td>{item.category.display}</td>
+                    <td>{item.categorySlug}</td>
                     <td>{item.title}</td>
                     <td>{item.selling_price}</td>
                     <td><img src={`http://localhost/laravel-react-backend/public/${item.image01}`} width="50px" alt={item.name} /></td>
@@ -47,7 +46,7 @@ function ViewProduct(){
                     <td>
                         <Link to={`/admin/edit-product/${item.id}`} className="btn btn-success btn-sm">Edit</Link>
                     </td>
-                    <td>{item.status === 0 ? 'Visible':'Hidden'}</td>
+                    <td>{item.status == 0 ? 'Visible':'Hidden'}</td>
                 </tr>
             )
         });

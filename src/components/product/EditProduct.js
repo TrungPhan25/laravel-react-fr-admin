@@ -28,7 +28,6 @@ const [selectedValue, setSelectedValue] = useState([]);
 
     const handleChange = (e) => {
         setSelectedValue(Array.isArray(e) ? e.map(x => x.value) : []);
-        console.log(selectedValue);
       }
     const [loading, setLoading] = useState(true);
     const handleInput = (e) => {
@@ -41,6 +40,12 @@ const [selectedValue, setSelectedValue] = useState([]);
     }
     const handleImage2 = (e) => {
         setPicture2({ image02: e.target.files[0] });
+    }
+
+    const [allcheckbox, setCheckboxes] = useState([]);
+    const handleCheckbox = (e) => {
+        e.persist();
+        setCheckboxes({...allcheckbox, [e.target.name]:e.target.checked });
     }
 
     useEffect( () => {
@@ -65,7 +70,7 @@ const [selectedValue, setSelectedValue] = useState([]);
                 setSelectedValue(res.data.product.size);
                 setPicture(res.data.product.image01);
                 setPicture2(res.data.product.image02);
-
+                setCheckboxes(res.data.product);
             }
             else if(res.data.status === 404)
             {
@@ -92,7 +97,7 @@ const [selectedValue, setSelectedValue] = useState([]);
         formData.append('selling_price', productInput.selling_price);
         formData.append('price', productInput.price);
         formData.append('qty', productInput.qty);
-        
+        formData.append('status', allcheckbox.status ? '1':'0');
         formData.append('size', JSON.stringify(selectedValue));
 
 
@@ -100,7 +105,6 @@ const [selectedValue, setSelectedValue] = useState([]);
             if(res.data.status === 200)
             {
                 // swal("Success",res.data.message,"success");
-                console.log('thanh cong');
                 swal("Success",res.data.massage,"success");
                 setError([]);
             }
@@ -121,7 +125,6 @@ const [selectedValue, setSelectedValue] = useState([]);
     {
         return <h4>Edit Product Data Loading...</h4>
     }
-
     return (
         <div className="container-fluid px-4">
         <div className="card mt-4">
@@ -135,11 +138,13 @@ const [selectedValue, setSelectedValue] = useState([]);
 
                     <ul className="nav nav-tabs" id="myTab" role="tablist">
                         <li className="nav-item" role="presentation">
-                            <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                            <button className="nav-link active" id="home-tab" data-bs-toggle="tab"
+                             data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
                         </li>
                      
                         <li className="nav-item" role="presentation">
-                            <button className="nav-link" id="otherdetails-tab" data-bs-toggle="tab" data-bs-target="#otherdetails" type="button" role="tab" aria-controls="otherdetails" aria-selected="false">Other Details</button>
+                            <button className="nav-link" id="otherdetails-tab" data-bs-toggle="tab" 
+                            data-bs-target="#otherdetails" type="button" role="tab" aria-controls="otherdetails" aria-selected="false">Other Details</button>
                         </li>
                     </ul>
                     <div className="tab-content" id="myTabContent">
@@ -197,25 +202,10 @@ const [selectedValue, setSelectedValue] = useState([]);
                                     </div>
             
                                     <div>
-                                    <img src={`http://localhost/laravel-react-backend/public/${pricture}`} width="100px" alt={pricture} />
                                     
-                                    </div>
-                                    <div className="col-md-8 form-group mb-3">
-                                        <label>Image1</label>
-                                        <input type="file" name="image01" onChange={handleImage}  className="form-control" />
-                                        <small className="text-danger">{errorlist.image01}</small>
-                                    </div>
-                                    <div>
-                                    <img src={`http://localhost/laravel-react-backend/public/${pricture2}`} width="100px" alt={pricture2} />
-                                    
-                                    </div>
-                                    <div className="col-md-8 form-group mb-3">
-                                        <label>Image2</label>
-                                        <input type="file" name="image02" onChange={handleImage2}  className="form-control" />
-                                        <small className="text-danger">{errorlist.image02}</small>
-                                    </div>
-                                
-                                    <div>
+                                </div>
+                                <div className="row">
+                                <div className="col-md-4 form-group mb-3"> 
                                     <label>Size</label>
                                     <Select
                                         defaultValue={selectedValue}
@@ -228,6 +218,32 @@ const [selectedValue, setSelectedValue] = useState([]);
                                         classNamePrefix="select"
                                     />
                                     </div>
+                                    <div className="col-md-4 form-group mb-3">
+                                        <label>Status (checked=Hidden)</label>
+                                        <input type="checkbox" name="status" onChange={handleCheckbox} defaultChecked={allcheckbox.status ==1? true:false }  className="w-50 h-50" />
+                                    </div>
+                                </div>
+
+                                <div className="row">
+                                
+                                    <div className="col-md-8 form-group mb-3">
+                                    <img src={`http://localhost/laravel-react-backend/public/${pricture}`} width="100px" alt={pricture} />
+                                        <label>Image1</label>
+                                        <input type="file" name="image01" onChange={handleImage}  className="form-control" />
+                                        <small className="text-danger">{errorlist.image01}</small>
+                                    </div>
+                                 
+                                    
+                                    
+                                    <div className="col-md-8 form-group mb-3">
+                                    <img src={`http://localhost/laravel-react-backend/public/${pricture2}`} width="100px" alt={pricture2} />
+
+                                        <label>Image2</label>
+                                        <input type="file" name="image02" onChange={handleImage2}  className="form-control" />
+                                        <small className="text-danger">{errorlist.image02}</small>
+                                    </div>
+                                </div>
+                                    
                             
                             </div>
 

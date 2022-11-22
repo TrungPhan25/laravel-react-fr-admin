@@ -25,7 +25,6 @@ function EditSlider(){
     }
 
     useEffect( () => {
-        
     
         const slider_id = params.id;
         axios.get(`/api/edit-slider/${slider_id}`).then(res=>{
