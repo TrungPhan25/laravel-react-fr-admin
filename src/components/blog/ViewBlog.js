@@ -45,7 +45,7 @@ function ViewBlog(){
                         <Link to={`/admin/edit-blog/${item.id}`} className="btn btn-success btn-sm">Edit</Link>
                     </td>
                     <td>
-                        <Link to={`/admin/edit-blog/${item.id}`} className="btn btn-danger btn-sm">Edit</Link>
+                        <Link to={`/admin/edit-blog/${item.id}`} className="btn btn-danger btn-sm">DELETED</Link>
                     </td>
                 </tr>
             )
